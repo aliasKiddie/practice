@@ -43,6 +43,7 @@ self.third = self.third + Characters.{2}[2]
 self.fourth = self.fourth + Characters.{3}[3]
 self.fifth = self.fifth + Characters.{4}[4]
         """
+        self.checklist = list('abcdefghijklmnopqrstuvwxyz ')
         
         self.first = ''
         self.second = ''
@@ -52,11 +53,13 @@ self.fifth = self.fifth + Characters.{4}[4]
             
     def make(self):
         for char in self.string:
-            if(char != ' '):
+            if(not(char in self.checklist)):
+                return('boo')
+            elif(char == ' '):
+                exec(self.script.format('whitespace', 'whitespace', 'whitespace', 'whitespace', 'whitespace'))
+            else:
                 exec(self.script.format(char, char, char, char, char))
                 exec(self.script.format('space', 'space', 'space', 'space', 'space'))
-            else:
-                exec(self.script.format('whitespace', 'whitespace', 'whitespace', 'whitespace', 'whitespace'))
                 
         return((self.first, self.second, self.third, self.fourth, self.fifth))
 
@@ -70,16 +73,19 @@ class User:
         stat = True
         os.system('cls')
 
-        for i in range(0, 5):
-            for j in range(0, self.width):
-                try:
-                    print(self.string[i][self.num+j], end='')
-                except:
-                    print(' ', end='')
-                    stat = False
+        if(self.string != 'boo'):
+            for i in range(0, 5):
+                for j in range(0, self.width):
+                    try:
+                        print(self.string[i][self.num+j], end='')
+                    except:
+                        print(' ', end='')
+                        stat = False
 
-            print('')
-
+                print('')
+        else:
+            stat = False
+                
         return(stat)
 
     def start(self):
