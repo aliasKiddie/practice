@@ -3,8 +3,6 @@ import os
 import time
 import sys
 
-command = ''
-
 class Characters():
     a = (' ***','*  *','****','*  *','*  *')
     b = ('*** ','* * ','****','*  *','****')
